@@ -1,62 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Routes from './Routes';
+import * as serviceWorker from './serviceWorker';
 
-class PropostaForm extends React.Component {
-	constructor(props) {
-	  super(props);
-	  this.state = {
-		  cpf: '',
-		  proposta: '',
-		};
-  
-	  this.handleChange = this.handleChange.bind(this);
-	  this.handleSubmit = this.handleSubmit.bind(this);
-	}
-  
-	handleChange(event) {
-	  this.setState({cpf: event.target.value});
-	}
-  
-	handleSubmit(event) {
-	  fetch('http://localhost:8080', {
-		method: 'post',
-		headers: { 'Content-Type': 'application/json'},
-		body: JSON.stringify(this.state)
-	  })
-	  .then(res => res.json())
-	  .then((data) => {
-	    console.log(`data: ${data}`)
-	    this.setState({ proposta: data })
-	  })
-	  .catch(console.log)
-	  alert('Proposta submetida: ' + this.state.cpf);
-	  alert('Resposta: ' + JSON.stringify(this.state));
-	  event.preventDefault();
-	}
+import '@appbaseio/reactivesearch/lib/styles/Base'
 
-	componentDidMount() {
+ReactDOM.render(
+  <React.StrictMode>
+    <Routes />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
-    }
-  
-	render() {
-	  return (
-		<React.Fragment>
-			<form onSubmit={this.handleSubmit} name="proposta">
-				<label>
-					Cpf:
-					<input type="text" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" value={this.state.cpf} onChange={this.handleChange} />
-					<input type="submit" value="Submit" />
-				</label>
-			</form>
-		</React.Fragment>
-	  );
-	}
-  }
-  
-  // ========================================
-  
-  ReactDOM.render(
-	<PropostaForm />,
-	document.getElementById('root')
-  );
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
