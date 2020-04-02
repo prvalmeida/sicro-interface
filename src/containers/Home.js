@@ -23,7 +23,7 @@ class Home extends Component {
 			<App />
 			<h5>
 				SICRO{' '}
-				<a
+				<a href="/#"
 				style={{ cursor: 'pointer' }}
 				onClick={this.logout}
 				>
@@ -38,7 +38,7 @@ class Home extends Component {
 				<h5>SICRO</h5>
 				<h5>
 				You are not logged in! Please{' '}
-				<a
+				<a href="/#"
 					style={{ cursor: 'pointer' }}
 					onClick={this.login}
 				>
