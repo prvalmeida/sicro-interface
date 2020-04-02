@@ -3,11 +3,11 @@ import './styles/App.css';
 
 import ServicesList from './components/ServicesList';
 import ClientList from './components/ClientList';
+import ContractList from './components/ContractList';
+import DocumentList from './components/DocumentList';
 
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import Form from 'react-bootstrap/Form'
-import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 
 class App extends Component {
@@ -15,7 +15,9 @@ class App extends Component {
 		super(props)
 		this.state = { 
 			showServices: true,
-			showClientList: false
+			showClientList: false,
+			showContractList: false,
+			showDocumentList: false,
 		}
 	}
 
@@ -23,7 +25,29 @@ class App extends Component {
 		console.log('handleClientList')
 		this.setState({
 			showServices: false,
-			showClientList: true
+			showClientList: true,
+			showContractList: false,
+			showDocumentList: false
+		  })
+	}
+
+	handleContractList = () => {
+		console.log('handleContractList')
+		this.setState({
+			showServices: false,
+			showClientList: false,
+			showContractList: true,
+			showDocumentList: false
+		  })
+	}
+
+	handleDocumentList = () => {
+		console.log('handleDocumentList')
+		this.setState({
+			showServices: false,
+			showClientList: false,
+			showContractList: false,
+			showDocumentList: true
 		  })
 	}
 
@@ -31,7 +55,9 @@ class App extends Component {
 		console.log('handleBackButton')
 		this.setState({
 			showServices: true,
-			showClientList: false
+			showClientList: false,
+			showContractList: false,
+			showDocumentList: false
 		  })
 	}
 
@@ -41,17 +67,13 @@ class App extends Component {
 			<Navbar bg="primary" variant="dark">
 			<Navbar.Brand href="#home">SICRO</Navbar.Brand>
 			<Nav className="mr-auto">
-				<Nav.Link href="#home">Home</Nav.Link>
-				<Nav.Link href="#features">Features</Nav.Link>
-				<Nav.Link href="#pricing">Pricing</Nav.Link>
+				<Nav.Link href="/">Home</Nav.Link>
 			</Nav>
-			<Form inline>
-				<FormControl type="text" placeholder="Search" className="mr-sm-2" />
-				<Button variant="outline-light">Search</Button>
-			</Form>
 			</Navbar>
-			{this.state.showServices && <ServicesList listClients={this.handleClientList}/>}
+			{this.state.showServices && <ServicesList listClients={this.handleClientList} listContracts={this.handleContractList} listDocuments={this.handleDocumentList}/>}
 			{this.state.showClientList && <div><ClientList /><Button onClick={this.handleBackButton}>Voltar</Button></div>}
+			{this.state.showContractList && <div><ContractList /><Button onClick={this.handleBackButton}>Voltar</Button></div>}
+			{this.state.showDocumentList && <div><DocumentList /><Button onClick={this.handleBackButton}>Voltar</Button></div>}
 		</div>
 		);
 	}

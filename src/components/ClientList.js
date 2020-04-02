@@ -31,18 +31,17 @@ class ClientList extends Component {
 				self.setState({ clients: data});
 			})
 			.catch(err => console.error(err))
-            // .then(data => this.setState({ postId: data.id }));
     }
 
 	render () {
 		console.log('ClientList render')
 		const items = this.state.clients.map((item, key) => {
 			return (
-			<tr>
-			<td>{item.id}</td>
-			<td>{item.name}</td>
-			<td>{item.cpf}</td>
-			<td>{item.proposals}</td>
+			<tr key={key}>
+				<td>{item.id}</td>
+				<td>{item.name}</td>
+				<td>{item.cpf}</td>
+				<td>{item.proposals}</td>
 			</tr>
 			)
 		});

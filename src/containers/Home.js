@@ -46,7 +46,6 @@ class Home extends Component {
 				</a>
 				{' '}to continue.
 				</h5>
-				<h6>This is the default <b><code>Home</code></b> component. The <b><code>App</code></b> component will only be visible once you authenticate.</h6>
 			</div>
 			)
 		}
