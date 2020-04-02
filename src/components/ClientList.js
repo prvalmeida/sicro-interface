@@ -34,7 +34,6 @@ class ClientList extends Component {
     }
 
 	render () {
-		console.log('ClientList render')
 		const items = this.state.clients.map((item, key) => {
 			return (
 			<tr key={key}>

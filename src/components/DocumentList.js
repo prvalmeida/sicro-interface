@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import Table from 'react-bootstrap/Table'
+import Container from 'react-bootstrap/Container'
+
 import {
 	withRouter
 } from 'react-router-dom';
@@ -30,8 +33,31 @@ class DocumentList extends Component {
     }
 
 	render () {
+		const items = this.state.documents.map((item, key) => {
+			return (
+			<tr key={key}>
+				<td>{item.id}</td>
+				<td>{item.path}</td>
+				<td>{item.client_id}</td>
+			</tr>
+			)
+		});
 		return (
-		<div></div>
+			<Container className="Services">
+				<Table responsive striped bordered hover size="sm">
+				<thead>
+					<tr>
+					<th>#</th>
+					<th>Nome</th>
+					<th>Caminho</th>
+					<th>ID CLiente</th>
+					</tr>
+				</thead>
+				<tbody>
+					{items}
+				</tbody>
+				</Table>
+			</Container>
 		)
 	};
   }
