@@ -7,7 +7,7 @@ export default function ClientCreate(props) {
 	const [cpf, setCpf] = useState("");
 	  
 	function validateForm() {
-	  return name.length > 0;
+	  return name.length > 0 && cpf.length > 0;
 	}
   
 	function handleSubmit(event) {

@@ -17,10 +17,12 @@ const ServicesList = props => {
 			<Row className="lists">
 				<Col><Button variant="primary" onClick={props.listClients}>Listar clientes</Button></Col>
 				<Col><Button variant="primary" onClick={props.listContracts}>Listar contratos</Button></Col>
+				<Col><Button variant="primary" onClick={props.listProposals}>Listar propostas</Button></Col>
 				<Col><Button variant="primary" onClick={props.listDocuments}>Listar documentos</Button></Col>
 			</Row>
 			<Row className="creation">
 				<Col><Button variant="primary" onClick={props.createClient}>Criar cliente</Button></Col>
+				<Col><Button variant="primary" onClick={props.createProposal}>Criar proposta</Button></Col>
 			</Row>
 	  	</Container>
 	  )
