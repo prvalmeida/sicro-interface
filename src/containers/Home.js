@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import App from '../App';
+import Login from "./Login";
 
 class Home extends Component {
   // calls the login method in authentication service
@@ -36,16 +37,7 @@ class Home extends Component {
 			!isAuthenticated() && (
 			<div className="container column">
 				<h5>SICRO</h5>
-				<h5>
-				You are not logged in! Please{' '}
-				<a href="/#"
-					style={{ cursor: 'pointer' }}
-					onClick={this.login}
-				>
-					Log In
-				</a>
-				{' '}to continue.
-				</h5>
+				<Login auth={this.props.auth} {...this.props}/>
 			</div>
 			)
 		}

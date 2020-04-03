@@ -9,6 +9,7 @@ import DocumentList from './components/DocumentList';
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Button from 'react-bootstrap/Button'
+import ClientCreate from './components/ClientCreate';
 
 class App extends Component {
 	constructor(props) {
@@ -18,6 +19,7 @@ class App extends Component {
 			showClientList: false,
 			showContractList: false,
 			showDocumentList: false,
+			showClientCreate: false,
 		}
 	}
 
@@ -27,7 +29,8 @@ class App extends Component {
 			showServices: false,
 			showClientList: true,
 			showContractList: false,
-			showDocumentList: false
+			showDocumentList: false,
+			showClientCreate: false,
 		  })
 	}
 
@@ -37,7 +40,8 @@ class App extends Component {
 			showServices: false,
 			showClientList: false,
 			showContractList: true,
-			showDocumentList: false
+			showDocumentList: false,
+			showClientCreate: false,
 		  })
 	}
 
@@ -47,7 +51,19 @@ class App extends Component {
 			showServices: false,
 			showClientList: false,
 			showContractList: false,
-			showDocumentList: true
+			showDocumentList: true,
+			showClientCreate: false,
+		  })
+	}
+
+	handleClientCreate = () => {
+		console.log('handleClientCreate')
+		this.setState({
+			showServices: false,
+			showClientList: false,
+			showContractList: false,
+			showDocumentList: false,
+			showClientCreate: true,
 		  })
 	}
 
@@ -57,7 +73,8 @@ class App extends Component {
 			showServices: true,
 			showClientList: false,
 			showContractList: false,
-			showDocumentList: false
+			showDocumentList: false,
+			showClientCreate: false,
 		  })
 	}
 
@@ -70,10 +87,11 @@ class App extends Component {
 				<Nav.Link href="/">Home</Nav.Link>
 			</Nav>
 			</Navbar>
-			{this.state.showServices && <ServicesList listClients={this.handleClientList} listContracts={this.handleContractList} listDocuments={this.handleDocumentList}/>}
+			{this.state.showServices && <ServicesList listClients={this.handleClientList} listContracts={this.handleContractList} listDocuments={this.handleDocumentList} createClient={this.handleClientCreate}/>}
 			{this.state.showClientList && <div><ClientList /><Button onClick={this.handleBackButton}>Voltar</Button></div>}
 			{this.state.showContractList && <div><ContractList /><Button onClick={this.handleBackButton}>Voltar</Button></div>}
 			{this.state.showDocumentList && <div><DocumentList /><Button onClick={this.handleBackButton}>Voltar</Button></div>}
+			{this.state.showClientCreate && <div><ClientCreate /><Button onClick={this.handleBackButton}>Voltar</Button></div>}
 		</div>
 		);
 	}

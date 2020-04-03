@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Router } from 'react-router-dom';
 import Home from './containers/Home';
+import Login from "./containers/Login";
 import Callback from './callback';
 import Auth from './auth';
 import history from './history';
@@ -19,6 +20,7 @@ const Routes = () => (
 	<div>
 		<Route exact path="/" render={(props) => <Home auth={auth} {...props} />} />
 		<Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
+		<Route path="/login" render={(props) => <Login auth={auth} {...props}/> } />
 		<Route path="/callback" render={(props) => {
 			console.log("Callback")
 			handleAuthentication(props);

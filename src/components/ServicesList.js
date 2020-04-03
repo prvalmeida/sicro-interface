@@ -14,10 +14,13 @@ import {
 const ServicesList = props => {
 	return (
 		<Container fluid className="serviceList">
-			<Row>
+			<Row className="lists">
 				<Col><Button variant="primary" onClick={props.listClients}>Listar clientes</Button></Col>
 				<Col><Button variant="primary" onClick={props.listContracts}>Listar contratos</Button></Col>
 				<Col><Button variant="primary" onClick={props.listDocuments}>Listar documentos</Button></Col>
+			</Row>
+			<Row className="creation">
+				<Col><Button variant="primary" onClick={props.createClient}>Criar cliente</Button></Col>
 			</Row>
 	  	</Container>
 	  )

@@ -4,8 +4,11 @@ var ClientOAuth2 = require('client-oauth2')
 export default class Auth {
 	//===================client-oauth2
 	auth0 = new ClientOAuth2({
-		clientId: 'H5jZEvO12CCCurMFgc1dSnWFcMneYEJhCBj2Tjn2',
-		clientSecret: 'TwCW5jGmjE1QKIhIseLQ3aSLfw1WJT7e3GwIhNLKMS8BjhgV30vohvxG55chT9lCD1GBtvM0lE3v03UIdV0JOgMhTIcb9IFktBmSTBSEILrz6nbfeKPKDVOe3N5sEQv2',
+		// clientId: 'H5jZEvO12CCCurMFgc1dSnWFcMneYEJhCBj2Tjn2',
+		// clientSecret: 'TwCW5jGmjE1QKIhIseLQ3aSLfw1WJT7e3GwIhNLKMS8BjhgV30vohvxG55chT9lCD1GBtvM0lE3v03UIdV0JOgMhTIcb9IFktBmSTBSEILrz6nbfeKPKDVOe3N5sEQv2',
+
+		clientId: 'jAjHgg572Lv2RB0cU49r7LPrsSpofMVzhraMrHvb',
+		clientSecret: 'YaxJsJZGBHz6pXDy3q3N4rATrU3Kave4fILGFFok4TwgJkf9dbu67tsRBaVS6PAUP3Gs5M3rrIFTGyYPhTfATQ7ot2GoU8dpasRhSL3K2pNPRYJtWPSbKUGPaBrKRIiX',
 		accessTokenUri: 'https://protected-atoll-74095.herokuapp.com/o/token/',
 		scopes: ['read', 'write']
 	})
@@ -13,10 +16,22 @@ export default class Auth {
 	credentials = {}
 	//===================client-oauth2
 
-	login = () => {
+	login = (user, password) => {
 		//===================client-oauth2
 		var self = this;
-		this.auth0.credentials.getToken()
+		// this.auth0.credentials.getToken()
+		// .then(function (user) {
+		// console.log(user) //=> { accessToken: '...', tokenType: 'bearer', ... }
+		// self.credentials.accessToken = user.accessToken
+		// self.credentials.tokenType = user.tokenType
+		// self.credentials.expiresIn = user.expires
+		// history.replace('/callback');
+		// })
+		// .catch(err => {
+		// 	console.error(err);
+		// })
+
+		this.auth0.owner.getToken(user, password)
 		.then(function (user) {
 		console.log(user) //=> { accessToken: '...', tokenType: 'bearer', ... }
 		self.credentials.accessToken = user.accessToken
